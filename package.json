@@ -1,0 +1,17 @@
+{
+  "name": "baby-growth-log",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Android-first KMP and Node.js monorepo for baby growth records.",
+  "packageManager": "pnpm@10.12.1",
+  "scripts": {
+    "api:dev": "pnpm --filter @baby-growth-log/api dev",
+    "api:build": "pnpm --filter @baby-growth-log/api build",
+    "worker:dev": "pnpm --filter @baby-growth-log/agent-worker dev",
+    "worker:build": "pnpm --filter @baby-growth-log/agent-worker build",
+    "contracts:build": "pnpm --filter @baby-growth-log/contracts build",
+    "lint": "pnpm -r lint",
+    "typecheck": "pnpm -r typecheck"
+  }
+}
+

@@ -1,0 +1,13 @@
+# 保持 Kotlin、TypeScript、Markdown 的基础格式一致。
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 2
+
+[*.{kt,kts}]
+indent_size = 4
+

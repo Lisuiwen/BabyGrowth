@@ -1,0 +1,5 @@
+# Monorepo 工作区声明，Node 服务和合同包都由 pnpm 统一管理。
+packages:
+  - "services/*"
+  - "packages/*"
+

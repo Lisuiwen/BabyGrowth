@@ -1,0 +1,5 @@
+<!-- App 基础主题，Compose 页面接管具体视觉表现。 -->
+<resources>
+    <style name="AppTheme" parent="android:style/Theme.Material.NoActionBar" />
+</resources>
+

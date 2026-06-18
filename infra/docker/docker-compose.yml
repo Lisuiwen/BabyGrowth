@@ -1,0 +1,16 @@
+# 本地开发基础设施。PostgreSQL 先预留，API 首版可不强依赖。
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: baby_growth_log
+      POSTGRES_USER: baby_growth_log
+      POSTGRES_PASSWORD: baby_growth_log
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+

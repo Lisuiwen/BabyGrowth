@@ -1,0 +1,28 @@
+# Gradle / Android 构建产物
+.gradle/
+build/
+**/build/
+local.properties
+
+# Node.js 依赖和构建产物
+node_modules/
+dist/
+.turbo/
+
+# IDE 和系统文件
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# 环境变量和本地密钥
+.env
+.env.*
+!.env.example
+
+# 临时脚本输出
+.agent/script/*
+!.agent/script/.gitkeep
+.agent/files/*
+!.agent/files/.gitkeep
+

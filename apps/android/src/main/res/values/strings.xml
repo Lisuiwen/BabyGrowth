@@ -1,0 +1,5 @@
+<!-- Android 文案资源，后续统一承载中文界面文案。 -->
+<resources>
+    <string name="app_name">宝宝成长记录本</string>
+</resources>
+
