@@ -31,3 +31,16 @@ pnpm worker:dev
 
 Android 工程可直接用 Android Studio 打开仓库根目录。
 
+## 云端开发
+
+仓库内置 `.devcontainer`，可在 GitHub Codespaces 或支持 Dev Container 的云 IDE 中直接启动。容器会安装：
+
+- JDK 17
+- Node.js 22
+- pnpm 10.12.1
+- Gradle 9.4.1
+- Android SDK command-line tools
+- Android platform/build-tools 36
+- Android emulator 与 API 36 Google APIs x86_64 镜像
+
+云端适合运行 Node API、Agent worker、contracts 构建、KMP shared 测试和 APK 构建。真机体验仍建议通过 `adb` 本地安装或下载 CI 产物到手机验证。
