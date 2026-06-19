@@ -13,7 +13,7 @@ description: 运行 Baby Growth Log 本地开发 CLI：pnpm API/worker、Android
 | pnpm | 10.12.1（`corepack enable`） |
 | JDK | 17+（本机 Temurin 21 可用） |
 | Android SDK | `%LOCALAPPDATA%\Android\Sdk` |
-| Gradle | 9.4.1（优先 `gradlew.bat`，否则 `.agent/files/gradle-tmp`） |
+| Gradle | 9.4.1（`gradlew.bat` / `gradlew`） |
 
 推荐 AVD：**`Pixel_7_API_34`**（Android 14）。备选 `Pixel_7_API_36`。
 
@@ -117,10 +117,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .cursor/skills/baby-growth-d
 ```powershell
 . .cursor/skills/baby-growth-dev-cli/scripts/android-session.ps1
 
-# Gradle（二选一）
+# Gradle（推荐 gradlew）
 .\gradlew.bat :apps:android:assembleDebug
-# 或
-.agent\files\gradle-tmp\gradle-9.4.1\bin\gradle.bat :apps:android:assembleDebug
 
 adb install -r apps\android\build\outputs\apk\debug\android-debug.apk
 adb shell am start -n com.babygrowthlog.app/.MainActivity
@@ -129,7 +127,7 @@ adb shell am start -n com.babygrowthlog.app/.MainActivity
 KMP 测试（shared 模块）：
 
 ```powershell
-.agent\files\gradle-tmp\gradle-9.4.1\bin\gradle.bat :shared:clean :shared:allTests
+.\gradlew.bat :shared:clean :shared:allTests
 ```
 
 ## 模拟器
@@ -184,7 +182,7 @@ services/api/          # Fastify API
 services/agent-worker/ # 后台 worker
 packages/contracts/    # DTO / 合同
 .cursor/skills/baby-growth-dev-cli/scripts/  # 本 skill 脚本
-.agent/files/gradle-tmp/                     # 临时 Gradle 9.4.1（无 gradlew 时使用）
+.agent/files/gradle-tmp/                     # 历史临时 Gradle（已由 gradlew 替代，可删）
 ```
 
 ## 脚本索引

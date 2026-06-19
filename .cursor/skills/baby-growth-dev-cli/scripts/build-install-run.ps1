@@ -11,16 +11,12 @@ Set-Location $repoRoot
 
 . (Join-Path $PSScriptRoot "android-session.ps1")
 
-# 解析 Gradle：优先 gradlew，否则使用仓库内临时 Gradle
+# 解析 Gradle：使用仓库 Gradle Wrapper
 $gradlew = Join-Path $repoRoot "gradlew.bat"
-$gradleBat = Join-Path $repoRoot ".agent\files\gradle-tmp\gradle-9.4.1\bin\gradle.bat"
-if (Test-Path $gradlew) {
-    $gradleCmd = $gradlew
-} elseif (Test-Path $gradleBat) {
-    $gradleCmd = $gradleBat
-} else {
-    Write-Error "Gradle not found. Run gradle wrapper setup or install Gradle 9.4.1."
+if (-not (Test-Path $gradlew)) {
+    Write-Error "gradlew.bat not found. Run: gradle wrapper --gradle-version 9.4.1"
 }
+$gradleCmd = $gradlew
 
 if ($StartEmulator) {
     $running = adb devices 2>&1 | Select-String "emulator"
