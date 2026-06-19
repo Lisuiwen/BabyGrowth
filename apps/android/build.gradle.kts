@@ -1,7 +1,7 @@
 // Android 首端应用模块，首版聚焦原生 Compose 体验。
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 android {

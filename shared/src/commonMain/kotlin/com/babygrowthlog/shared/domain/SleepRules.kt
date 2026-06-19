@@ -1,6 +1,6 @@
 package com.babygrowthlog.shared.domain
 
-import kotlinx.datetime.Clock
+import kotlinx.datetime.Instant
 import kotlin.time.Duration.Companion.hours
 
 /**
@@ -12,9 +12,9 @@ object SleepRules {
     /**
      * 判断“正在睡”是否超过弱提示阈值，只提示修正，不自动替用户结束记录。
      */
-    fun shouldPromptOverflow(record: SleepRecord, now: Clock = Clock.System): Boolean {
+    fun shouldPromptOverflow(record: SleepRecord, now: Instant): Boolean {
         if (record.status != SleepStatus.SLEEPING) return false
-        return now.now() - record.startedAt > overflowThreshold
+        return now - record.startedAt > overflowThreshold
     }
 }
 

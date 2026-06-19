@@ -4,7 +4,6 @@ import com.babygrowthlog.shared.domain.AuditInfo
 import com.babygrowthlog.shared.domain.SleepRecord
 import com.babygrowthlog.shared.domain.SleepRules
 import com.babygrowthlog.shared.domain.SleepStatus
-import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlin.test.Test
 import kotlin.test.assertFalse
@@ -18,18 +17,18 @@ class SleepRulesTest {
     fun sleepingLongerThanFiveHoursShouldPromptOverflow() {
         val startedAt = Instant.parse("2026-06-18T00:00:00Z")
         val record = sampleSleepRecord(startedAt)
-        val fixedClock = Clock { Instant.parse("2026-06-18T06:00:00Z") }
+        val now = Instant.parse("2026-06-18T06:00:00Z")
 
-        assertTrue(SleepRules.shouldPromptOverflow(record, fixedClock))
+        assertTrue(SleepRules.shouldPromptOverflow(record, now))
     }
 
     @Test
     fun finishedSleepShouldNotPromptOverflow() {
         val startedAt = Instant.parse("2026-06-18T00:00:00Z")
         val record = sampleSleepRecord(startedAt).copy(status = SleepStatus.FINISHED)
-        val fixedClock = Clock { Instant.parse("2026-06-18T06:00:00Z") }
+        val now = Instant.parse("2026-06-18T06:00:00Z")
 
-        assertFalse(SleepRules.shouldPromptOverflow(record, fixedClock))
+        assertFalse(SleepRules.shouldPromptOverflow(record, now))
     }
 
     /**
